@@ -96,8 +96,12 @@ def handle_voice(message):
 
 @bot.message_handler(func=lambda m: not m.text.startswith('/'))
 def handle_message(message):
-    answer = get_ai_response(message.text, message.chat.id)
-    bot.send_message(message.chat.id, answer)
-
+    try:
+        answer = get_ai_response(message.text, message.chat.id)
+        bot.send_message(message.chat.id, answer)
+    except Exception as e:
+        bot.send_message(message.chat.id, 
+        "⚠️ Временная ошибка, попробуй через минуту")
+        
 bot.polling()
 

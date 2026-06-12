@@ -102,6 +102,6 @@ def handle_message(message):
     except Exception as e:
         bot.send_message(message.chat.id, 
         "⚠️ Временная ошибка, попробуй через минуту")
-        
-bot.polling()
+
+bot.polling(interval=1, timeout=20)
 
